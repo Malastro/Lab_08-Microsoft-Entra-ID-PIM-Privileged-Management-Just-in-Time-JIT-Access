@@ -1,22 +1,26 @@
 # Lab_08-Microsoft-Entra-ID-PIM-Privileged-Management-Just-in-Time-JIT-Access
 
-## 1. Descripción del proyecto
+1. Descripción del proyecto
 
-Referencia: La que se avecina — Temporada 2, capítulo 24
+Referencia: La que se avecina — Temporada 2, episodio 11: «Un datáfono, un suicida y un presidente en las últimas».
 
-En este episodio, un fraude económico protagonizado por Amador provoca que Enrique Pastor y Antonio Recio reclamen un cambio en la presidencia de Mirador de Montepinar. 
+En este episodio, Amador Rivas atraviesa una crisis personal y económica después de descubrir la infidelidad de su mujer. La situación termina llevándole a abandonar el domicilio familiar y trasladarse a casa de Leo.
 
-Esta situación nos sirve para plantear un problema de gobernanza: ¿quién debe tener autoridad para tomar decisiones importantes y bajo qué condiciones puede ejercerla?
+Mientras tanto, en Mirador de Montepinar se desarrolla un conflicto que afecta directamente a toda la comunidad. El presidente acepta una oferta de 60.000 euros a cambio de permitir la instalación de una antena de telefonía móvil en el edificio. Sin embargo, decide quedarse con la mitad del dinero y tratar de ocultar la operación al resto de los vecinos.
 
-Tras los problemas de gestión de la comunidad, Mirador de Montepinar S.L. decide revisar cómo se administran sus recursos digitales. Hasta ahora, determinados usuarios han mantenido permisos administrativos de forma permanente, incluso cuando no necesitan utilizarlos.
+Cuando el fraude sale a la luz, estalla el enfrentamiento entre los vecinos. Enrique Pastor inicia una oposición contra Amador para apartarlo de la presidencia y Antonio Recio también decide presentarse como candidato. La gestión de la comunidad queda marcada por la desconfianza y la disputa por el control de las decisiones.
 
-Esta situación supone un riesgo. Una cuenta con privilegios elevados puede realizar cambios importantes sin que exista una necesidad operativa inmediata ni un control previo suficiente.
+Esta situación sirve como punto de partida para el laboratorio. El episodio muestra cómo una persona con autoridad puede tomar decisiones importantes en nombre de una organización sin que existan controles adecuados sobre el ejercicio de sus responsabilidades.
 
-Para solucionar este problema, la organización decide implantar Microsoft Entra Privileged Identity Management (PIM).
+Tras los problemas de gestión de la comunidad, Mirador de Montepinar S.L. decide revisar el modelo de administración de sus recursos digitales. Durante una auditoría interna, la empresa detecta que algunas cuentas mantienen permisos administrativos permanentes, incluso cuando sus propietarios no necesitan utilizarlos en su actividad diaria.
 
-A través de PIM, los administradores podrán disponer de asignaciones elegibles y activar sus privilegios únicamente cuando los necesiten. La activación estará sujeta a controles como MFA, justificación, aprobación y una duración limitada.
+Esta situación representa un riesgo para la seguridad de la organización: una cuenta comprometida o un uso indebido de privilegios podría permitir realizar cambios críticos sin una necesidad operativa justificada.
 
-La analogía del capítulo es una adaptación narrativa del problema de gobernanza; no pretendemos atribuirle al episodio una trama tecnológica que no tiene.
+Para solucionar este problema, la empresa decide implantar Microsoft Entra Privileged Identity Management (PIM) y adoptar un modelo de acceso Just-In-Time (JIT).
+
+Mediante PIM, los usuarios dispondrán de asignaciones elegibles (Eligible) y tendrán que solicitar la activación de sus privilegios cuando necesiten realizar tareas administrativas. Estas activaciones podrán estar sujetas a requisitos de autenticación multifactor (MFA), justificación, aprobación y una duración limitada.
+
+De esta forma, Mirador de Montepinar S.L. busca evitar que sus administradores mantengan privilegios elevados de manera permanente y establecer un mayor control sobre quién puede ejercerlos, cuándo y bajo qué condiciones.
 
 ## 2. Objetivos del proyecto
 El laboratorio tendrá los siguientes objetivos:
