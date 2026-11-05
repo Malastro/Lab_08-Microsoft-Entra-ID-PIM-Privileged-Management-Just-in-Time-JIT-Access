@@ -198,9 +198,9 @@ Una vez transcurrida la hora de activación, se comprobó el comportamiento de P
 
 - La activación finalizó a las 03:53 del 5 de noviembre de 2026.
 - El rol Helpdesk Administrator desapareció de sus asignaciones activas.
- [Antonio no activo](screenshots/08_arecionoactivo.png)
+[Antonio no activo](screenshots/08_arecionoactivo.png)
 - La asignación permaneció disponible en sus asignaciones aptas.
- [Antonio apto](screenshots/07_arecioapto.png)
+[Antonio apto](screenshots/07_arecioapto.png)
 
 **Amador Rivas**
 
