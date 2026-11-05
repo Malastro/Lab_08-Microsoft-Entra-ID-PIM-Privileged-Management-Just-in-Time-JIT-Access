@@ -76,16 +76,16 @@ Se inició sesión con la cuenta de Antonio Recio y se accedió a PIM para consu
 
 Antonio solicitó activar el rol Helpdesk Administrator durante una hora. Para ello, tuvo que proporcionar una justificación que explicase el motivo de la solicitud.
 
-![Antonio pide privilegios](Screenschots/01_arecioactiv.png)
+![Antonio pide privilegios](screenschots/01_arecioactiv.png)
 
 La petición quedó pendiente de aprobación. Posteriormente, se inició sesión con Enrique Pastor, que accedió a las solicitudes de aprobación de roles de Microsoft Entra y revisó la petición.
 
 Enrique aprobó la activación, añadiendo su propia justificación. Una vez aprobada, Antonio recibió los privilegios de Helpdesk Administrator durante el periodo establecido.
 
-![Antonio tiene privilegios](02_arecioactivado.png)
+![Antonio tiene privilegios](screenshots/02_arecioactivado.png)
 
 Se comprobó que el rol aparecía entre sus asignaciones activas y que podía acceder a la opción de restablecimiento de contraseñas de otros usuarios.
-![Antonio posee privilegios](03_conrestablecida.png)
+![Antonio posee privilegios](screenshots/03_conrestablecida.png)
 
 
 ### Fase 4. Solicitud y aprobación de privilegios de Amador Rivas
@@ -96,11 +96,11 @@ Amador solicitó la activación temporal de Helpdesk Administrator e incluyó un
 
 Enrique Pastor recibió la petición y volvió a actuar como aprobador. Tras revisar la solicitud, concedió la activación durante una hora.
 
-![Amador tiene privilegios](04_arivasactivado.png)
+![Amador tiene privilegios](screenshots/04_arivasactivado.png)
 
 Se comprobó que Amador tenía el rol entre sus asignaciones activas y que podía acceder a la opción de restablecimiento de contraseñas.
 
-![Amador posee privilegios](05_arivascon.png)
+![Amador posee privilegios](screenshots/05_arivascon.png)
 
 ### Fase 5. Revisión de registros de auditoría
 
@@ -116,7 +116,7 @@ Se localizaron eventos correspondientes a:
 
 Los registros permitieron comprobar que ambas activaciones finalizaron correctamente y conservaron las justificaciones introducidas por los usuarios y el aprobador.
 
-![Registro de auditoria](06_registroauditoria.png)
+![Registro de auditoria](screenshots/06_registroauditoria.png)
 
 Durante la primera activación de Antonio se produjo un intento duplicado de solicitud. Al no aparecer una respuesta inmediata en el portal, se volvió a pulsar la opción de activación mientras ya existía una petición pendiente. Microsoft Entra registró el segundo intento con el error `PendingRoleAssignmentRequest`. La solicitud original continuó su proceso y fue aprobada correctamente.
 
@@ -198,13 +198,17 @@ Una vez transcurrida la hora de activación, se comprobó el comportamiento de P
 
 - La activación finalizó a las 03:53 del 5 de noviembre de 2026.
 - El rol Helpdesk Administrator desapareció de sus asignaciones activas.
+ [Antonio no activo](screenshots/08_arecionoactivo.png)
 - La asignación permaneció disponible en sus asignaciones aptas.
+ [Antonio apto](screenshots/07_arecioapto.png)
 
 **Amador Rivas**
 
 - La activación finalizó a las 04:11 del 5 de noviembre de 2026.
 - El rol Helpdesk Administrator desapareció de sus asignaciones activas.
+  [Amador no activo](screenshots/10_arivasnoactivo.png)
 - La asignación permaneció disponible en sus asignaciones aptas.
+  [Amador apto](screenshots/09_arivasapto.png)
 
 Las dos comprobaciones confirmaron que PIM retiró automáticamente los privilegios al finalizar el periodo de activación, sin eliminar la elegibilidad de los usuarios.
 
