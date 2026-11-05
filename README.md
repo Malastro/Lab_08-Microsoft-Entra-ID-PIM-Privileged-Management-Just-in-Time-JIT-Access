@@ -1,6 +1,6 @@
 # Lab_08-Microsoft-Entra-ID-PIM-Privileged-Management-Just-in-Time-JIT-Access
 
-1. Descripción del proyecto
+## 1. Descripción del proyecto
 
 Referencia: La que se avecina — Temporada 2, episodio 11: «Un datáfono, un suicida y un presidente en las últimas».
 
