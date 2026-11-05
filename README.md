@@ -119,3 +119,93 @@ Los registros permitieron comprobar que ambas activaciones finalizaron correctam
 ![Registro de auditoria](06_registroauditoria.png)
 
 Durante la primera activación de Antonio se produjo un intento duplicado de solicitud. Al no aparecer una respuesta inmediata en el portal, se volvió a pulsar la opción de activación mientras ya existía una petición pendiente. Microsoft Entra registró el segundo intento con el error `PendingRoleAssignmentRequest`. La solicitud original continuó su proceso y fue aprobada correctamente.
+
+## 4. Fases de implementación
+
+### Fase 1. Preparación del entorno y asignación de identidades
+
+Se preparó el entorno de Microsoft Entra ID para realizar las pruebas de Privileged Identity Management (PIM).
+
+Se utilizaron tres identidades de Mirador de Montepinar:
+
+- **Antonio Recio:** usuario sincronizado desde Active Directory local.
+- **Enrique Pastor:** usuario sincronizado desde Active Directory local y designado como aprobador.
+- **Amador Rivas:** usuario creado directamente en Microsoft Entra ID.
+
+Se habilitaron las licencias necesarias para trabajar con PIM y se comprobó que las tres identidades podían iniciar sesión. También se verificó el registro de Microsoft Authenticator para los usuarios que participarían en las activaciones.
+
+### Fase 2. Configuración de Privileged Identity Management
+
+Se accedió a Privileged Identity Management desde Microsoft Entra ID y se seleccionó el rol **Helpdesk Administrator (Administrador del departamento de soporte técnico)**.
+
+Este rol permite realizar determinadas operaciones de soporte sobre usuarios, como restablecer contraseñas e invalidar tokens de actualización, sin conceder privilegios de administración global.
+
+Se configuró a Antonio Recio y Amador Rivas con asignaciones elegibles (*Eligible*) de carácter permanente. De este modo, ambos podían solicitar la activación del rol cuando necesitasen realizar una tarea que requiriese esos privilegios.
+
+Se establecieron las siguientes condiciones de activación:
+
+- Duración máxima de activación: **1 hora**.
+- Justificación obligatoria para solicitar la activación.
+- MFA obligatoria durante la activación.
+- Aprobación obligatoria antes de conceder los privilegios.
+- Enrique Pastor como aprobador designado.
+
+También se habilitó el requisito de MFA para las asignaciones activas.
+
+### Fase 3. Solicitud y aprobación de privilegios de Antonio Recio
+
+Se inició sesión con la cuenta de Antonio Recio y se accedió a PIM para consultar sus asignaciones elegibles.
+
+Antonio solicitó activar el rol Helpdesk Administrator durante una hora, proporcionando una justificación relacionada con un caso comunitario urgente.
+
+La petición quedó pendiente de aprobación. Posteriormente, se inició sesión con Enrique Pastor, que accedió a las solicitudes de aprobación de roles de Microsoft Entra y revisó la petición.
+
+Enrique aprobó la activación, añadiendo su propia justificación. Una vez aprobada, Antonio recibió los privilegios de Helpdesk Administrator durante el periodo establecido.
+
+Se comprobó que el rol aparecía entre sus asignaciones activas y que podía acceder a la opción de restablecimiento de contraseñas de otros usuarios.
+
+### Fase 4. Solicitud y aprobación de privilegios de Amador Rivas
+
+Se repitió el procedimiento con la cuenta de Amador Rivas para comprobar que el flujo de activación funcionaba también con una identidad creada directamente en Microsoft Entra ID.
+
+Amador solicitó la activación temporal de Helpdesk Administrator e incluyó una justificación acorde con su particular situación personal y sus aspiraciones empresariales.
+
+Enrique Pastor recibió la petición y volvió a actuar como aprobador. Tras revisar la solicitud, concedió la activación durante una hora.
+
+Se comprobó que Amador tenía el rol entre sus asignaciones activas y que podía acceder a la opción de restablecimiento de contraseñas.
+
+### Fase 5. Revisión de registros de auditoría
+
+Se consultaron los registros de auditoría de Microsoft Entra ID para revisar la trazabilidad de las operaciones realizadas mediante PIM.
+
+Se localizaron eventos correspondientes a:
+
+- Creación de asignaciones elegibles permanentes.
+- Solicitudes de activación de Antonio y Amador.
+- Solicitudes de aprobación.
+- Aprobaciones realizadas por Enrique Pastor.
+- Activaciones completadas correctamente.
+
+Los registros permitieron comprobar que ambas activaciones finalizaron correctamente y conservaron las justificaciones introducidas por los usuarios y el aprobador.
+
+Durante la primera activación de Antonio se produjo un intento duplicado de solicitud. Al no aparecer una respuesta inmediata en el portal, se volvió a pulsar la opción de activación mientras ya existía una petición pendiente. Microsoft Entra registró el segundo intento con el error `PendingRoleAssignmentRequest`. La solicitud original continuó su proceso y fue aprobada correctamente.
+
+### Fase 6. Verificación de la expiración automática de privilegios
+
+Una vez transcurrida la hora de activación, se comprobó el comportamiento de PIM con las dos identidades.
+
+**Antonio Recio**
+
+- La activación finalizó a las 03:53 del 5 de noviembre de 2026.
+- El rol Helpdesk Administrator desapareció de sus asignaciones activas.
+- La asignación permaneció disponible en sus asignaciones aptas.
+
+**Amador Rivas**
+
+- La activación finalizó a las 04:11 del 5 de noviembre de 2026.
+- El rol Helpdesk Administrator desapareció de sus asignaciones activas.
+- La asignación permaneció disponible en sus asignaciones aptas.
+
+Las dos comprobaciones confirmaron que PIM retiró automáticamente los privilegios al finalizar el periodo de activación, sin eliminar la elegibilidad de los usuarios.
+
+De esta forma, se validó el funcionamiento del acceso Just-In-Time (JIT): los usuarios pueden solicitar privilegios cuando los necesitan, pero no mantienen el acceso administrativo activo de forma permanente.
